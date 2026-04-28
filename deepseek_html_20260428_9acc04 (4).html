@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💻 Linguagens de Programação - Modo DEV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 100%);
+            font-family: 'Segoe UI', 'Poppins', 'Arial', sans-serif;
+            padding: 40px 24px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .sub-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .badge {
+            background: rgba(30, 41, 59, 0.8);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            backdrop-filter: blur(4px);
+        }
+
+        .buttons-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .lang-btn {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 18px 36px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+            box-shadow: 0 15px 30px -8px #3b82f640;
+        }
+
+        .btn-python { border-bottom: 4px solid #3b82f6; }
+        .btn-java { border-bottom: 4px solid #f97316; }
+        .btn-lua { border-bottom: 4px solid #a855f7; }
+
+        .info-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 48px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s;
+            min-height: 500px;
+        }
+
+        .lang-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+        }
+
+        .lang-title-panel {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            border-left: 6px solid;
+            padding-left: 20px;
+        }
+
+        .explanation-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .info-card {
+            background: #0f172a;
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid #334155;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: #facc15;
+        }
+
+        .info-card p, .info-card ul {
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        .info-card ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .info-card li {
+            margin: 8px 0;
+        }
+
+        .code-example {
+            background: #020617;
+            padding: 16px;
+            border-radius: 20px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #86efac;
+            margin-top: 16px;
+            border-left: 4px solid #3b82f6;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .final-message {
+            background: linear-gradient(95deg, #3b82f620, #a855f720);
+            border-radius: 28px;
+            padding: 24px;
+            margin-top: 24px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .global-conclusion {
+            background: linear-gradient(135deg, #1e1b4b, #0f172a);
+            border-radius: 40px;
+            padding: 36px;
+            text-align: center;
+            border: 1px solid #facc1540;
+            margin-bottom: 30px;
+        }
+
+        .global-conclusion h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #facc15, #f97316);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .final-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .final-icon-item {
+            text-align: center;
+        }
+
+        .final-icon-item span:first-child {
+            font-size: 2.5rem;
+            display: block;
+        }
+
+        /* QR CODE SECTION */
+        .qrcode-section {
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+            border-radius: 40px;
+            padding: 40px;
+            text-align: center;
+            border: 2px solid #3b82f640;
+            margin-top: 20px;
+        }
+
+        .qrcode-section h3 {
+            font-size: 1.8rem;
+            color: #60a5fa;
+            margin-bottom: 20px;
+        }
+
+        .qrcode-section p {
+            color: #cbd5e1;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .qrcode-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .qrcode-image {
+            background: white;
+            padding: 20px;
+            border-radius: 32px;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .qrcode-image img {
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
+
+        .qrcode-link {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            word-break: break-all;
+            background: #0f172a;
+            padding: 12px 24px;
+            border-radius: 40px;
+            display: inline-block;
+        }
+
+        .qrcode-link a {
+            color: #facc15;
+            text-decoration: none;
+        }
+
+        .qrcode-link a:hover {
+            text-decoration: underline;
+        }
+
+        .placeholder-text {
+            text-align: center;
+            color: #94a3b8;
+            padding: 80px 20px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 700px) {
+            .lang-btn {
+                padding: 12px 24px;
+                font-size: 1.2rem;
+            }
+            .info-panel {
+                padding: 24px;
+            }
+            .lang-title-panel {
+                font-size: 1.8rem;
+            }
+            .main-title {
+                font-size: 2.2rem;
+            }
+            .qrcode-image img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="main-title">⚡ PROGRAMAÇÃO · DEV MODE ⚡</div>
+        <div class="sub-badges">
+            <div class="badge">📌 Dar instruções ao computador</div>
+            <div class="badge">🎮 Criar jogos, apps e sites</div>
+            <div class="badge">🧠 Base da tecnologia moderna</div>
+        </div>
+    </div>
+
+    <div class="buttons-grid">
+        <button class="lang-btn btn-python" onclick="showLanguage('python')">
+            🐍 PYTHON
+        </button>
+        <button class="lang-btn btn-java" onclick="showLanguage('java')">
+            🌐 JAVA / HTML5
+        </button>
+        <button class="lang-btn btn-lua" onclick="showLanguage('lua')">
+            🎮 LUA (ROBLOX)
+        </button>
+    </div>
+
+    <div id="infoPanel" class="info-panel">
+        <div class="placeholder-text">
+            ✨ Clique em um dos botões acima para ver a explicação completa ✨<br><br>
+            🐍 PYTHON &nbsp;&nbsp;|&nbsp;&nbsp; 🌐 JAVA/HTML5 &nbsp;&nbsp;|&nbsp;&nbsp; 🎮 LUA (ROBLOX)
+        </div>
+    </div>
+
+    <div class="global-conclusion">
+        <h2>🚀 FINAL — Você pode criar qualquer coisa!</h2>
+        <div class="final-icons">
+            <div class="final-icon-item"><span>🐍</span><span>Python: versátil (IA / automação)</span></div>
+            <div class="final-icon-item"><span>🌐</span><span>Java/HTML5: web + Android</span></div>
+            <div class="final-icon-item"><span>🎮</span><span>Lua: jogos leves e rápidos</span></div>
+        </div>
+        <div style="font-size: 1.8rem;">🚀 🌍 💻</div>
+        <p style="margin-top: 20px; color: #cbd5e1;">Base da tecnologia moderna — comece hoje mesmo!</p>
+        <p style="margin-top: 12px; font-size: 0.85rem; color: #facc15;">🎨 [Imagem conceito: foguete decolando com ícones de código, controle e planeta]</p>
+    </div>
+
+    <!-- SEÇÃO DO QR CODE -->
+    <div class="qrcode-section">
+        <h3>📱 ACESSE NOSSO PROJETO</h3>
+        <p>Escaneie o QR Code abaixo para acessar o projeto <strong>Neon Chaos</strong>!</p>
+        <div class="qrcode-container">
+            <div class="qrcode-image">
+                <img id="qrcodeImg" src="" alt="QR Code">
+            </div>
+            <div class="qrcode-link">
+                🔗 Link direto: <a href="https://jhonnyedson10.github.io/neon-chaos-original-/" target="_blank">https://jhonnyedson10.github.io/neon-chaos-original-/</a>
+            </div>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.85rem; color: #64748b;">✨ Use a câmera do celular para escanear ✨</p>
+    </div>
+</div>
+
+<script>
+    // Função para gerar QR Code usando API gratuita
+    function generateQRCode() {
+        const url = "https://jhonnyedson10.github.io/neon-chaos-original-/";
+        // Usando a API do QR Server (gratuita, sem necessidade de chave)
+        const qrCodeURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+        document.getElementById('qrcodeImg').src = qrCodeURL;
+    }
+
+    // Funções dos botões das linguagens
+    function showLanguage(lang) {
+        const panel = document.getElementById('infoPanel');
+        
+        if (lang === 'python') {
+            panel.innerHTML = `
+                <div class="lang-icon">🐍</div>
+                <div class="lang-title-panel" style="border-left-color: #3b82f6;">PYTHON</div>
+                <div class="explanation-box">
+                    <div class="info-card">
+                        <h3>📖 EXPLICAÇÃO:</h3>
+                        <p>Python é uma linguagem de alto nível, <strong>fácil e poderosa</strong>. Ideal para iniciantes, usada em <strong>Inteligência Artificial, automação, análise de dados e jogos</strong>. Sua sintaxe limpa (indentação obrigatória) acelera o desenvolvimento.</p>
+                        <ul>
+                            <li>🧠 IA/ML: TensorFlow, PyTorch</li>
+                            <li>🤖 Automação: Selenium, PyAutoGUI</li>
+                            <li>🎮 Jogos: PyGame</li>
+                            <li>🌐 Web: Django, Flask</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>🛠️ COMO USAR:</h3>
+                        <p>1. Instale Python em <strong>python.org</strong><br>
+                        2. Use qualquer editor (VS Code, PyCharm)<br>
+                        3. Crie um arquivo .py e escreva código<br>
+                        4. Execute no terminal: <code>python arquivo.py</code></p>
+                        <div class="code-example">
+                            # Exemplo simples<br>
+                            nome = input("Seu nome: ")<br>
+                            print(f"Olá, {nome}! Bem-vindo ao Python!")
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎯 FINALIZANDO:</h3>
+                        <p>Python é a porta de entrada para o mundo da programação moderna. Com ela você pode criar desde assistentes virtuais até sistemas completos de machine learning. Gigantes como Google, Netflix e Spotify usam Python diariamente.</p>
+                        <div class="code-example" style="border-left-color: #facc15;">💡 "Simple is better than complex." — Zen of Python</div>
+                    </div>
+                </div>
+                <div class="final-message">
+                    ✅ Resumo Python: versátil, iniciante-friendly, gigante em IA e automação.
+                </div>
+            `;
+        } 
+        else if (lang === 'java') {
+            panel.innerHTML = `
+                <div class="lang-icon">🌐</div>
+                <div class="lang-title-panel" style="border-left-color: #f97316;">JAVA & HTML5</div>
+                <div class="explanation-box">
+                    <div class="info-card">
+                        <h3>📖 EXPLICAÇÃO:</h3>
+                        <p><strong>Java:</strong> Linguagem robusta, multiplataforma (JVM). Usada em apps Android, sistemas empresariais e back-end.<br>
+                        <strong>HTML5:</strong> Base da web moderna, permite criar sites interativos, jogos e animações com canvas, áudio/vídeo, junto com CSS3 e JavaScript.</p>
+                        <ul>
+                            <li>☕ Java: "Write once, run anywhere"</li>
+                            <li>📱 Android nativo (Kotlin + Java)</li>
+                            <li>🎨 HTML5 + CSS3 + JS = Tríade front-end</li>
+                            <li>🎮 Jogos com Canvas ou engines como Phaser</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>🛠️ COMO USAR:</h3>
+                        <p><strong>Java:</strong> Instale JDK, use IDE (IntelliJ/Eclipse), compile com javac, execute com java.<br>
+                        <strong>HTML5:</strong> Basta um editor de código (VS Code) e um navegador. Crie um arquivo .html e abra no navegador.</p>
+                        <div class="code-example">
+                            // Java<br>
+                            public class Main {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Olá Java!");<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            }<br><br>
+                            &lt;!-- HTML5 --&gt;<br>
+                            &lt;canvas id="meuJogo" width="400" height="200"&gt;&lt;/canvas&gt;<br>
+                            &lt;script&gt;alert("HTML5 é incrível!");&lt;/script&gt;
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎯 FINALIZANDO:</h3>
+                        <p>Java domina o mundo corporativo e Android. HTML5 é a alma da web interativa. Juntos, eles cobrem desde sistemas bancários até portais de jogos e sites modernos.</p>
+                        <div class="code-example" style="border-left-color: #f97316;">🌍 A web moderna e os sistemas Android rodam sobre essa dupla poderosa.</div>
+                    </div>
+                </div>
+                <div class="final-message">
+                    ✅ Resumo Java/HTML5: robustez + web nativa — essenciais para qualquer dev.
+                </div>
+            `;
+        } 
+        else if (lang === 'lua') {
+            panel.innerHTML = `
+                <div class="lang-icon">🎮</div>
+                <div class="lang-title-panel" style="border-left-color: #a855f7;">LUA (ROBLOX)</div>
+                <div class="explanation-box">
+                    <div class="info-card">
+                        <h3>📖 EXPLICAÇÃO:</h3>
+                        <p>Lua é uma linguagem <strong>leve, rápida e embutível</strong>. Tornou-se extremamente popular no desenvolvimento de jogos, especialmente no <strong>Roblox Studio</strong> (onde é a linguagem principal). Usada também em addons de World of Warcraft, Adobe Lightroom e sistemas embarcados.</p>
+                        <ul>
+                            <li>🎮 Roblox: crie jogos completos com Lua</li>
+                            <li>🧩 Fácil integração com C/C++</li>
+                            <li>⚡ Performance excelente para jogos 2D/3D leves</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>🛠️ COMO USAR:</h3>
+                        <p>1. Baixe o <strong>Roblox Studio</strong> gratuitamente<br>
+                        2. Acesse o editor e crie scripts dentro de objetos (Part, Script, LocalScript)<br>
+                        3. Use a sintaxe simples do Lua: variáveis, funções, eventos<br>
+                        Também pode usar Lua fora do Roblox: instale Lua.org e execute com <code>lua arquivo.lua</code></p>
+                        <div class="code-example">
+                            -- Exemplo dentro do Roblox<br>
+                            local part = script.Parent<br>
+                            part.Touched:Connect(function(hit)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;print("Alguém tocou na parte!")<br>
+                            end)<br>
+                            print("Olá do Roblox Studio!")
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎯 FINALIZANDO:</h3>
+                        <p>Lua é a escolha perfeita para quem quer criar jogos no Roblox de forma rápida e divertida. É uma linguagem que ensina lógica de programação enquanto você cria mundos interativos, e ainda abre portas para game design profissional.</p>
+                        <div class="code-example" style="border-left-color: #a855f7;">🎲 Milhões de jogadores esperam sua criação no Roblox!</div>
+                    </div>
+                </div>
+                <div class="final-message">
+                    ✅ Resumo Lua: leve, rápida, ideal para jogos e Roblox.
+                </div>
+            `;
+        }
+    }
+
+    // Gerar QR Code quando a página carregar
+    window.onload = function() {
+        generateQRCode();
+    };
+</script>
+</body>
+</html>
